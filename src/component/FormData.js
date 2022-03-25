@@ -14,6 +14,7 @@ const Data = props => {
         placeholderTextColor="#B6B5B5"
         onChangeText={onChangeText}
       />
+      {props.berangkat(text)}
     </View>
   );
 };

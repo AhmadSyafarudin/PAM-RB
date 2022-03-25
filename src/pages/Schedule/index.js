@@ -9,42 +9,21 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Data from '../../component/FormData';
-import Calendar from '../../component/Calendar';
-import ScheduleData from './../../component/ScheduleData';
+import Footer from './../../component/Footer';
 
-const Schedule = () => {
+const Schedule = ({navigation, route}) => {
   return (
     <View style={styles.Home}>
-      <Header />
       <View style={{top: 123}}>
-        <ScheduleData />
-        <ScheduleData />
-        <ScheduleData />
+        <Text style={{color: '#000'}}>{route.params.berangkat}</Text>
+        <Text style={{color: '#000'}}>{route.params.tujuan}</Text>
+        <Text style={{color: '#000'}}>{route.params.kelas}</Text>
+        <Text style={{color: '#000'}}>{route.params.tanggal}</Text>
+        <Text style={{color: '#000'}}>{route.params.jam}</Text>
+        <Text style={{color: '#000'}}>{route.params.dewasa}</Text>
+        <Text style={{color: '#000'}}>{route.params.anak}</Text>
       </View>
       <Footer />
-    </View>
-  );
-};
-
-const Header = props => {
-  return (
-    <View style={styles.Header}>
-      <Icon style={styles.Account} name="account" size={45} color="white" />
-      <Icon style={styles.Menu} name="menu" size={45} color="white" />
-      <Text style={styles.HeaderText}> Hiling.id </Text>
-      <Text style={styles.HeaderTextSearch}> Hasil Pencarian Penerbangan </Text>
-      <Text style={styles.HeaderTextSearch}> (Tanggal Penerbangan) </Text>
-    </View>
-  );
-};
-
-const Footer = () => {
-  return (
-    <View style={styles.Footer}>
-      <Text style={{color: '#8A8686'}}>
-        Copyright Ahmad Syafarudin-119140044
-      </Text>
     </View>
   );
 };

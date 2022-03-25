@@ -9,9 +9,6 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    // <View style={{flex: 1}}>
-    //   <Home />
-    // </View>
     <NavigationContainer>
       <Stack.Navigator
         initalRouteName="Home"

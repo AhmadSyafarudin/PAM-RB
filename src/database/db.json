@@ -1,0 +1,38 @@
+{
+  "tiket": [
+    {
+      "id": 1,
+      "berangkat": "Bakauheni",
+      "tujuan": "Merak",
+      "tanggal": "Kamis, 5 Maret 2022",
+      "jam": "20:00",
+      "dewasa": 2,
+      "anak": 1,
+      "harga": "Rp. 150.000"
+    }
+  ],
+  "pesanan": [
+    {
+      "id": 1,
+      "berangkat": "Bakauheni",
+      "tujuan": "Merak",
+      "tanggal": "Kamis, 5 Maret 2022",
+      "jam": "20:00",
+      "dewasa": 2,
+      "anak": 1,
+      "harga": "Rp. 150.000"
+    }
+  ],
+  "pembatalan": [
+    {
+      "id": 1,
+      "berangkat": "Bakauheni",
+      "tujuan": "Merak",
+      "tanggal": "Kamis, 5 Maret 2022",
+      "jam": "20:00",
+      "dewasa": 2,
+      "anak": 1,
+      "harga": "Rp. 150.000"
+    }
+  ]
+}

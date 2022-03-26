@@ -19,9 +19,11 @@ const Schedule = ({navigation, route}) => {
         <Text style={{color: '#000'}}>{route.params.tujuan}</Text>
         <Text style={{color: '#000'}}>{route.params.kelas}</Text>
         <Text style={{color: '#000'}}>{route.params.tanggal}</Text>
+        <Text style={{color: '#000'}}>{route.params.waktu}</Text>
         <Text style={{color: '#000'}}>{route.params.jam}</Text>
         <Text style={{color: '#000'}}>{route.params.dewasa}</Text>
         <Text style={{color: '#000'}}>{route.params.anak}</Text>
+        <Text style={{color: '#000'}}>{route.params.costDewasa}</Text>
       </View>
       <Footer />
     </View>

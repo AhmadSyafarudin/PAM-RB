@@ -13,6 +13,8 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import moment from 'moment';
+// import Axios from 'axios';
 
 // import Data from '../../component/FormData';
 // import Calendar from '../../component/Calendar';
@@ -72,7 +74,6 @@ const Form = () => {
     let tempDate = date.toString().split(' ');
     return date !== '' ? `${tempDate[4]}` : '';
   };
-
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
@@ -92,6 +93,262 @@ const Form = () => {
   const [anak, setAnak] = useState(0);
 
   const navigation = useNavigation();
+
+  const onPress = () => {
+    let nextDay = getDate();
+    let nextTime = 0;
+
+    const getJam1 = () => {
+      let tempDate = getTime().split(':');
+      let jam = `${tempDate[0]}` + ':' + `${tempDate[1]}`;
+      return jam;
+    };
+
+    const getJam2 = () => {
+      let tempDate = getTime().split(':');
+      let jam = `${tempDate[0]}`;
+
+      const regex = /^0/;
+      // return regex.test(jam);
+
+      if (regex.test(jam)) {
+        let plus = jam.split('0');
+        if (plus[1] == '') {
+          plus = 1;
+          nextTime = plus;
+          jam = '0' + plus.toString();
+          return joinTime(jam);
+        }
+        plus = parseInt(plus[1]) + 1;
+        nextTime = plus;
+        if (plus > 9) {
+          return joinTime(plus.toString());
+        } else {
+          jam = '0' + plus.toString();
+          return joinTime(jam);
+        }
+      } else {
+        let plus = parseInt(jam) + 1;
+        nextTime = plus;
+        if (plus > 23) {
+          nextDay = moment(date).add(1, 'day');
+          let getDate = nextDay.toString().split(' ');
+          if (nextDay !== '') {
+            nextDay = `${getDate[0]} ${getDate[1]} ${getDate[2]} ${getDate[3]}`;
+          }
+          plus = 0;
+          nextTime = plus;
+          jam = '0' + plus.toString();
+          return joinTime(jam);
+        }
+
+        return joinTime(plus.toString());
+      }
+    };
+
+    const getJam3 = () => {
+      let tempDate = getTime().split(':');
+      let jam = `${tempDate[0]}`;
+      const regex = /^0/;
+      // return regex.test(jam);
+      if (regex.test(jam)) {
+        let plus = jam.split('0');
+        if (plus[1] == '') {
+          plus = nextTime + 1;
+          nextTime = plus;
+          jam = '0' + plus.toString();
+          return joinTime(jam);
+        }
+        plus = nextTime + 1;
+        nextTime = plus;
+        if (plus > 9) {
+          return joinTime(plus.toString());
+        } else {
+          jam = '0' + plus.toString();
+          return joinTime(jam);
+        }
+      } else {
+        // let plus = parseInt(jam) + 2;
+        let plus = nextTime + 1;
+        nextTime = plus;
+        if (plus > 23) {
+          nextDay = moment(date).add(1, 'day');
+          let getDate = nextDay.toString().split(' ');
+          if (nextDay !== '') {
+            nextDay = `${getDate[0]} ${getDate[1]} ${getDate[2]} ${getDate[3]}`;
+          }
+          plus = nextTime - 23;
+          nextTime = plus;
+          jam = '0' + plus.toString();
+          return joinTime(jam);
+        } else if (plus.toString().length < 2) {
+          jam = '0' + plus.toString();
+          return joinTime(jam);
+        }
+        return joinTime(plus.toString());
+      }
+    };
+
+    const getJam4 = () => {
+      let tempDate = getTime().split(':');
+      let jam = `${tempDate[0]}`;
+      const regex = /^0/;
+      // return regex.test(jam);
+      if (regex.test(jam)) {
+        let plus = jam.split('0');
+        if (plus[1] == '') {
+          plus = nextTime + 1;
+          nextTime = plus;
+          jam = '0' + plus.toString();
+          return joinTime(jam);
+        }
+        plus = nextTime + 1;
+        nextTime = plus;
+        if (plus > 9) {
+          return joinTime(plus.toString());
+        } else {
+          jam = '0' + plus.toString();
+          return joinTime(jam);
+        }
+      } else {
+        // let plus = parseInt(jam) + 2;
+        let plus = nextTime + 1;
+        nextTime = plus;
+        if (plus > 23) {
+          nextDay = moment(date).add(1, 'day');
+          let getDate = nextDay.toString().split(' ');
+          if (nextDay !== '') {
+            nextDay = `${getDate[0]} ${getDate[1]} ${getDate[2]} ${getDate[3]}`;
+          }
+          plus = nextTime - 23;
+          nextTime = plus;
+          jam = '0' + plus.toString();
+          return joinTime(jam);
+        } else if (plus.toString().length < 2) {
+          jam = '0' + plus.toString();
+          return joinTime(jam);
+        }
+        return joinTime(plus.toString());
+      }
+    };
+
+    const getJam5 = () => {
+      let tempDate = getTime().split(':');
+      let jam = `${tempDate[0]}`;
+      const regex = /^0/;
+      // return regex.test(jam);
+      if (regex.test(jam)) {
+        let plus = jam.split('0');
+        if (plus[1] == '') {
+          plus = nextTime + 1;
+          nextTime = plus;
+          jam = '0' + plus.toString();
+          return joinTime(jam);
+        }
+        plus = nextTime + 1;
+        nextTime = plus;
+        if (plus > 9) {
+          return joinTime(plus.toString());
+        } else {
+          jam = '0' + plus.toString();
+          return joinTime(jam);
+        }
+      } else {
+        // let plus = parseInt(jam) + 2;
+        let plus = nextTime + 1;
+        nextTime = plus;
+        if (plus > 23) {
+          nextDay = moment(date).add(1, 'day');
+          let getDate = nextDay.toString().split(' ');
+          if (nextDay !== '') {
+            nextDay = `${getDate[0]} ${getDate[1]} ${getDate[2]} ${getDate[3]}`;
+          }
+          plus = nextTime - 23;
+          nextTime = plus;
+          jam = '0' + plus.toString();
+          return joinTime(jam);
+        } else if (plus.toString().length < 2) {
+          jam = '0' + plus.toString();
+          return joinTime(jam);
+        }
+        return joinTime(plus.toString());
+      }
+    };
+
+    const joinTime = jam => {
+      let tempDate = getTime().split(':');
+      let waktu = jam + ':' + `${tempDate[1]}`;
+      return waktu;
+    };
+
+    const costDewasa = dewasa * 65000;
+    const costAnak = anak * 30000;
+    const costTotal = costDewasa + costAnak;
+
+    const data1 = {
+      berangkat,
+      tujuan,
+      kelas,
+      waktu: getJam1(),
+      tanggal: getDate(),
+      dewasa,
+      anak,
+      costDewasa: 'Rp ' + costDewasa.toString(),
+    };
+    const data2 = {
+      berangkat,
+      tujuan,
+      kelas,
+      waktu: getJam2(),
+      tanggal: nextDay,
+      dewasa,
+      anak,
+    };
+    const data3 = {
+      berangkat,
+      tujuan,
+      kelas,
+      waktu: getJam3(),
+      tanggal: nextDay,
+      dewasa,
+      anak,
+    };
+    const data4 = {
+      berangkat,
+      tujuan,
+      kelas,
+      waktu: getJam4(),
+      tanggal: nextDay,
+      dewasa,
+      anak,
+    };
+    const data5 = {
+      berangkat,
+      tujuan,
+      kelas,
+      waktu: getJam5(),
+      tanggal: nextDay,
+      dewasa,
+      anak,
+    };
+    console.log(data1);
+    console.log(data2);
+    console.log(data3);
+    console.log(data4);
+    console.log(data5);
+
+    return navigation.navigate('Schedule', {
+      berangkat: berangkat,
+      tujuan: tujuan,
+      kelas: kelas,
+      waktu: getJam1(),
+      jam: getJam2(),
+      tanggal: getDate(),
+      dewasa: dewasa,
+      anak: anak,
+      costDewasa: costDewasa,
+    });
+  };
 
   return (
     <View style={styles.Form}>
@@ -425,19 +682,7 @@ const Form = () => {
           </View>
         </View>
 
-        <TouchableOpacity
-          style={styles.Button}
-          onPress={() =>
-            navigation.navigate('Schedule', {
-              berangkat: berangkat,
-              tujuan: tujuan,
-              kelas: kelas,
-              tanggal: getDate(),
-              jam: getTime(),
-              dewasa: dewasa,
-              anak: anak,
-            })
-          }>
+        <TouchableOpacity style={styles.Button} onPress={onPress}>
           <Icon name="calendar-search" size={30} color="#FFFF" />
           <Text
             style={{

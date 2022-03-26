@@ -14,7 +14,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import moment from 'moment';
-// import Axios from 'axios';
+import Axios from 'axios';
 
 // import Data from '../../component/FormData';
 // import Calendar from '../../component/Calendar';
@@ -268,6 +268,11 @@ const Form = () => {
           jam = '0' + plus.toString();
           return joinTime(jam);
         } else if (plus.toString().length < 2) {
+          nextDay = moment(date).add(1, 'day');
+          let getDate = nextDay.toString().split(' ');
+          if (nextDay !== '') {
+            nextDay = `${getDate[0]} ${getDate[1]} ${getDate[2]} ${getDate[3]}`;
+          }
           jam = '0' + plus.toString();
           return joinTime(jam);
         }
@@ -281,73 +286,86 @@ const Form = () => {
       return waktu;
     };
 
-    const costDewasa = dewasa * 65000;
-    const costAnak = anak * 30000;
+    let costDewasa = 0;
+    let costAnak = 0;
+    if (kelas == 'Regular') {
+      costDewasa = dewasa * 50000;
+      costAnak = anak * 25000;
+    } else {
+      costDewasa = dewasa * 65000;
+      costAnak = anak * 30000;
+    }
     const costTotal = costDewasa + costAnak;
 
-    const data1 = {
-      berangkat,
-      tujuan,
-      kelas,
-      waktu: getJam1(),
-      tanggal: getDate(),
-      dewasa,
-      anak,
-      costDewasa: 'Rp ' + costDewasa.toString(),
-    };
-    const data2 = {
-      berangkat,
-      tujuan,
-      kelas,
-      waktu: getJam2(),
-      tanggal: nextDay,
-      dewasa,
-      anak,
-    };
-    const data3 = {
-      berangkat,
-      tujuan,
-      kelas,
-      waktu: getJam3(),
-      tanggal: nextDay,
-      dewasa,
-      anak,
-    };
-    const data4 = {
-      berangkat,
-      tujuan,
-      kelas,
-      waktu: getJam4(),
-      tanggal: nextDay,
-      dewasa,
-      anak,
-    };
-    const data5 = {
-      berangkat,
-      tujuan,
-      kelas,
-      waktu: getJam5(),
-      tanggal: nextDay,
-      dewasa,
-      anak,
-    };
-    console.log(data1);
-    console.log(data2);
-    console.log(data3);
-    console.log(data4);
-    console.log(data5);
+    const DATA = [
+      {
+        id: 1,
+        berangkat,
+        tujuan,
+        kelas,
+        tanggal: getDate(),
+        waktu: getJam1(),
+        dewasa,
+        anak,
+        hargaDewasa: 'Rp ' + costDewasa.toString(),
+        hargaAnak: 'Rp ' + costAnak.toString(),
+        hargaTotal: 'Rp ' + costTotal.toString(),
+      },
+      {
+        id: 2,
+        berangkat,
+        tujuan,
+        kelas,
+        waktu: getJam2(),
+        tanggal: nextDay,
+        dewasa,
+        anak,
+        hargaDewasa: 'Rp ' + costDewasa.toString(),
+        hargaAnak: 'Rp ' + costAnak.toString(),
+        hargaTotal: 'Rp ' + costTotal.toString(),
+      },
+      {
+        id: 3,
+        berangkat,
+        tujuan,
+        kelas,
+        waktu: getJam3(),
+        tanggal: nextDay,
+        dewasa,
+        anak,
+        hargaDewasa: 'Rp ' + costDewasa.toString(),
+        hargaAnak: 'Rp ' + costAnak.toString(),
+        hargaTotal: 'Rp ' + costTotal.toString(),
+      },
+      {
+        id: 4,
+        berangkat,
+        tujuan,
+        kelas,
+        waktu: getJam4(),
+        tanggal: nextDay,
+        dewasa,
+        anak,
+        hargaDewasa: 'Rp ' + costDewasa.toString(),
+        hargaAnak: 'Rp ' + costAnak.toString(),
+        hargaTotal: 'Rp ' + costTotal.toString(),
+      },
+      {
+        id: 5,
+        berangkat,
+        tujuan,
+        kelas,
+        waktu: getJam5(),
+        tanggal: nextDay,
+        dewasa,
+        anak,
+        hargaDewasa: 'Rp ' + costDewasa.toString(),
+        hargaAnak: 'Rp ' + costAnak.toString(),
+        hargaTotal: 'Rp ' + costTotal.toString(),
+      },
+    ];
 
-    return navigation.navigate('Schedule', {
-      berangkat: berangkat,
-      tujuan: tujuan,
-      kelas: kelas,
-      waktu: getJam1(),
-      jam: getJam2(),
-      tanggal: getDate(),
-      dewasa: dewasa,
-      anak: anak,
-      costDewasa: costDewasa,
-    });
+    return navigation.navigate('Schedule', {DATA});
   };
 
   return (

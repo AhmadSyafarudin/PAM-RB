@@ -33,7 +33,7 @@ const Footer = () => {
       <View style={{padding: 10, paddingLeft: 20}}>
         <TouchableOpacity
           style={styles.Menu}
-          onPress={() => navigation.navigate('Schedule')}>
+          onPress={() => navigation.navigate('DummyOrder')}>
           <Icon name="notebook" size={30} color="#3076af" />
           <Text
             style={{
@@ -48,7 +48,7 @@ const Footer = () => {
       <View style={{padding: 10, paddingLeft: 20}}>
         <TouchableOpacity
           style={styles.Menu}
-          onPress={() => navigation.navigate('Schedule')}>
+          onPress={() => navigation.navigate('DummyCancel')}>
           <Icon name="book-cancel" size={30} color="#3076af" />
           <Text
             style={{
@@ -63,7 +63,7 @@ const Footer = () => {
       <View style={{padding: 10, paddingLeft: 20}}>
         <TouchableOpacity
           style={styles.Menu}
-          onPress={() => navigation.navigate('Schedule')}>
+          onPress={() => navigation.navigate('Others')}>
           <Icon name="menu" size={30} color="#3076af" />
           <Text
             style={{

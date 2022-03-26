@@ -28,26 +28,6 @@ const Item = ({
   hargaAnak,
   hargaTotal,
 }) => {
-  const navigation = useNavigation();
-
-  const onPress = () => {
-    const DATA = [
-      {
-        id,
-        berangkat,
-        tujuan,
-        kelas,
-        tanggal,
-        waktu,
-        dewasa,
-        anak,
-        hargaDewasa,
-        hargaAnak,
-        hargaTotal,
-      },
-    ];
-    return navigation.navigate('Order', {DATA});
-  };
   return (
     <View style={styles.item}>
       <Text
@@ -143,23 +123,11 @@ const Item = ({
           {hargaTotal}
         </Text>
       </View>
-      <TouchableOpacity style={styles.Button} onPress={onPress}>
-        <Icon name="ticket-percent" size={30} color="#FFFF" />
-        <Text
-          style={{
-            fontWeight: 'bold',
-            fontSize: 20,
-            color: 'white',
-            marginLeft: 10,
-          }}>
-          Pesan Tiket
-        </Text>
-      </TouchableOpacity>
     </View>
   );
 };
 
-const Schedule = ({navigation, route}) => {
+const Cancel = ({navigation, route}) => {
   const renderItem = ({item}) => (
     <Item
       id={item.id}
@@ -176,43 +144,25 @@ const Schedule = ({navigation, route}) => {
     />
   );
 
-  if (
-    route.params.DATA[1].berangkat == null ||
-    route.params.DATA[1].tujuan == null ||
-    route.params.DATA[1].kelas == null ||
-    route.params.DATA[1].berangkat === route.params.DATA[1].tujuan ||
-    route.params.DATA[1].dewasa == 0
-  ) {
-    return (
-      <View style={styles.Home}>
-        <View
-          style={{
-            top: '30%',
-          }}>
-          <Icon name="null" size={200} color="lightgrey" />
-          <Text style={{color: 'lightgrey', fontSize: 50, textAlign: 'center'}}>
-            NULL
-          </Text>
-        </View>
-        <Footer />
+  return (
+    <View style={styles.Home}>
+      <View style={styles.Header}>
+        <Text style={{fontSize: 20, fontWeight: 'bold', color: '#FFFF'}}>
+          Tiket yang Dibatalkan
+        </Text>
       </View>
-    );
-  } else {
-    return (
-      <View style={styles.Home}>
-        <SafeAreaView style={{height: '90%'}}>
-          <FlatList
-            data={route.params.DATA}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-            style={{width: 400}}
-          />
-          {/* <Text style={{color: '#000'}}>{route.params.DATA[1].berangkat}</Text> */}
-        </SafeAreaView>
-        <Footer />
-      </View>
-    );
-  }
+      <SafeAreaView style={{height: '90%'}}>
+        <FlatList
+          data={route.params.DATA}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+          style={{width: 400}}
+        />
+        {/* <Text style={{color: '#000'}}>{route.params.DATA[1].berangkat}</Text> */}
+      </SafeAreaView>
+      <Footer />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -222,11 +172,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   Header: {
-    backgroundColor: '#FFFF',
-    width: '50%',
+    backgroundColor: '#3076af',
+    width: '100%',
     height: 40,
-    top: 10,
-    borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#000000',
@@ -262,4 +210,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Schedule;
+export default Cancel;

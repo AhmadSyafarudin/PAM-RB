@@ -1,6 +1,6 @@
-### Tampilan
-# Daftar Kontak
+# Tampilan
+## Daftar Kontak
 ![Home](/SS/home.jpg)
 
-# Cari Kontak
+## Cari Kontak
 ![Search](/SS/search.jpg)
